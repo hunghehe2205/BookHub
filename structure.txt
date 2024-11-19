@@ -1,0 +1,68 @@
+ebook_manager/
+├── main.py                          # Entry point for FastAPI application, sets up the server and registers routes
+├── config.py                        # Configuration settings for database and application, including environment variables
+├── db/
+│   ├── connection.py                # Database connection setup (pure SQL), establishes the connection pool to the SQL database
+│   ├── migrations/                  # SQL scripts for managing database schema changes, such as adding or modifying tables
+│   ├── init.sql                     # SQL script to initialize database schema and tables for the first time setup
+├── models/
+│   ├── user.py                      # Data model for user (SQL queries for CRUD operations), handles user data operations like insert, update, delete, and select
+│   ├── membership.py                # Data model for membership (SQL queries for CRUD operations), manages membership details like type and expiration
+│   ├── transaction_method.py        # Data model for transaction method (SQL queries for CRUD operations), handles user payment methods
+│   ├── transaction.py               # Data model for transaction (SQL queries for CRUD operations), processes user transactions including purchases and payments
+│   ├── book.py                      # Data model for book (SQL queries for CRUD operations), manages book details like title, author, and publication info
+│   ├── access.py                    # Data model for book access (SQL queries for CRUD operations), tracks which users have accessed which books
+│   ├── feedback.py                  # Data model for feedback (SQL queries for CRUD operations), stores user feedback and ratings for books
+│   ├── leaderboard.py               # Data model for leaderboard (SQL queries for CRUD operations), tracks user rankings based on activity metrics
+│   ├── friend.py                    # Data model for friend relationships (SQL queries for CRUD operations), manages friend connections between users
+├── repositories/
+│   ├── user_repository.py           # SQL queries to interact with the user table, abstracts database logic for user-related operations
+│   ├── membership_repository.py     # SQL queries to interact with the membership table, handles membership creation and updates
+│   ├── transaction_method_repository.py # SQL queries to interact with the transaction method table, manages adding and updating user payment methods
+│   ├── transaction_repository.py    # SQL queries to interact with the transaction table, includes functionality for creating and retrieving transactions
+│   ├── book_repository.py           # SQL queries to interact with the book table, supports book retrieval, updates, and deletions
+│   ├── access_repository.py         # SQL queries to interact with the access table, logs user access to specific books
+│   ├── feedback_repository.py       # SQL queries to interact with the feedback table, handles adding user comments and ratings to books
+│   ├── leaderboard_repository.py    # SQL queries to interact with the leaderboard table, maintains rankings based on user activities
+│   ├── friend_repository.py         # SQL queries to interact with the friend table, supports adding, removing, and updating friend relationships
+├── services/
+│   ├── user_service.py              # Business logic for users (e.g., user registration), connects routes to database operations for user actions
+│   ├── membership_service.py        # Business logic for memberships (e.g., adding, updating memberships), coordinates membership-related processes
+│   ├── transaction_service.py       # Business logic for transactions (e.g., processing payments), validates and processes user transactions
+│   ├── book_service.py              # Business logic for books (e.g., adding, updating books), handles actions like adding a new book or updating book details
+│   ├── access_service.py            # Business logic for accessing books, manages access rights and user activity related to book viewing
+│   ├── feedback_service.py          # Business logic for feedback (e.g., adding comments, ratings), processes user input regarding books and ensures feedback integrity
+│   ├── leaderboard_service.py       # Business logic for leaderboard (e.g., updating user rankings), manages ranking calculations based on user activity
+│   ├── friend_service.py            # Business logic for managing friends (e.g., adding, accepting friends), coordinates friend requests and status updates
+├── schemas/
+│   ├── user.py                      # Pydantic models for request and response bodies for users, used for data validation in user-related API endpoints
+│   ├── membership.py                # Pydantic models for request and response bodies for memberships, defines schema for creating and updating memberships
+│   ├── transaction.py               # Pydantic models for request and response bodies for transactions, ensures proper data structure for transactions
+│   ├── book.py                      # Pydantic models for request and response bodies for books, validates book data used in API requests and responses
+│   ├── access.py                    # Pydantic models for request and response bodies for book access, defines access-related schemas
+│   ├── feedback.py                  # Pydantic models for request and response bodies for feedback, structures the data for comments and ratings
+│   ├── leaderboard.py               # Pydantic models for request and response bodies for leaderboard, defines the format for leaderboard entries
+│   ├── friend.py                    # Pydantic models for request and response bodies for friends, used to manage friend relationships in the API
+├── routes/
+│   ├── user_routes.py               # API routes related to user management, handles endpoints like user registration and login
+│   ├── membership_routes.py         # API routes related to memberships, includes endpoints for managing user membership details
+│   ├── transaction_routes.py        # API routes related to transactions, manages transaction-related requests like payment processing
+│   ├── book_routes.py               # API routes related to books, includes endpoints for CRUD operations on books
+│   ├── access_routes.py             # API routes related to book access, manages requests for accessing specific books
+│   ├── feedback_routes.py           # API routes related to feedback, handles submitting and retrieving user comments and ratings
+│   ├── leaderboard_routes.py        # API routes related to leaderboard, provides endpoints for viewing and updating rankings
+│   ├── friend_routes.py             # API routes related to friend management, handles adding friends, accepting requests, etc.
+├── utils/
+│   ├── hashing.py                   # Utility functions for hashing user passwords, used for securely storing passwords
+│   ├── validators.py                # Validation utilities, common functions for input validation across different modules
+├── tests/
+│   ├── test_user.py                 # Unit tests for user functionalities, tests CRUD and other user operations
+│   ├── test_membership.py           # Unit tests for membership functionalities, verifies creation and updates of memberships
+│   ├── test_transaction.py          # Unit tests for transaction functionalities, ensures payment and transaction logic works correctly
+│   ├── test_book.py                 # Unit tests for book functionalities, tests book addition, updates, and retrieval
+│   ├── test_access.py               # Unit tests for book access functionalities, verifies user access to books
+│   ├── test_feedback.py             # Unit tests for feedback functionalities, tests the submission and retrieval of user feedback
+│   ├── test_leaderboard.py          # Unit tests for leaderboard functionalities, checks ranking calculations and updates
+│   ├── test_friend.py               # Unit tests for friend functionalities, tests adding, accepting, and removing friends
+├── requirements.txt                 # Python dependencies, lists required libraries and packages for the project
+└── README.md                        # Project documentation, includes setup instructions, features, and usage guidelines
